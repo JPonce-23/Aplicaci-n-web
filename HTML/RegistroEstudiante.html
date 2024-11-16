@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de estudiante</title>
+    <link rel="stylesheet" href="Diseños/Esilos.css">
+</head>
+<body>
+    <div class="fondo">
+        <div class="recuadro">
+            <h1 class="titulo">Registro de estudiante</h1><br>
+            <form action="">
+                <div class="entrada">
+                   <p align="left">Nombre(s)*</p>
+                   <input type="text" placeholder="Nombre(s)" required><br>
+                </div>
+                <div class="entrada">
+                    <br><p align="left">Apellido paterno*</p>
+                    <input type="text" placeholder="Apellido paterno" required>
+                </div>
+                <div class="entrada">
+                    <br><p align="left">Apellido materno*</p>
+                    <input type="text" placeholder="Apellido materno" required>
+                </div>
+                <div class="entrada">
+                    <br><p align="left">Fecha de nacimiento*</p>
+                    <input type="text" placeholder="DD/MM/AAAA" maxlength="10" required pattern="\d{2} \d{2} \d{4}">
+                </div>
+                <div class="entrada">
+                    <br><p align="left">Teléfono del estudiante*</p>
+                    <input type="text" placeholder="Número telefónico" required>
+                </div>
+                <div class="entrada">
+                    <br><p align="left">Correo insitucional*</p>
+                    <input type="email" placeholder="Correo insitucional" required>
+                </div>
+
+                <div class="entrada">
+                    <br><p align="left">Contraseña*</p>
+                    <div class="enmascarar">
+                    <input type="password" id="contra" placeholder="Contraseña" minlength="6" maxlength="12" required>
+                    <label class="toggle-password">
+                        <input type="checkbox" id="mostrar-contraseña" onclick="togglePassword('contra','mostrar-contraseña')">
+                    </label>
+                    </div>
+                </div>
+                <div class="entrada">
+                    <br><p align="left">Confirmación de contraseña*</p>
+                    <div class="enmascarar">
+                        <input type="password" id="confirm-password" placeholder="Confirma tu contraseña" minlength="6" maxlength="12" required>
+                        <label class="toggle-password">
+                            <input type="checkbox" id="mostrar-conf-contraseña onclick="togglePassword('confirm-password', 'mostrar-conf-contraseña')">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="entrada">
+                    <br><p align="left">Foto de perfil</p>
+                    <input type="file" accept="image/*" class="file-input"> <!--FIL TRA PARA QUE SOLO APAREZCAN IMAGENES-->
+                    <div class="foto-perfil">
+                        <span>Elige una foto de perfil</span>
+                    </div>
+                </div>
+                
+                <div class="entrada">
+                    <p align="left">Sexo*</p>
+                    <div class="sexo-opciones">
+                        <input type="radio" id="masculino" name="sexo" value="masculino" required>
+                        <label for="masculino">Masculino</label>
+                
+                        <input type="radio" id="femenino" name="sexo" value="femenino">
+                        <label for="femenino">Femenino</label>
+                
+                        <input type="radio" id="indefinido" name="sexo" value="indefinido">
+                        <label for="indefinido">Indefinido</label>
+                    </div>
+                </div>
+                <button type="submit" class="boton">Enviar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
