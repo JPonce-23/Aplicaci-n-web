@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Publicación</title>
+  <link rel="stylesheet" href="Diseños/Estilos-crear-publicacion.css">
+  <script src="Scripts/EditarPublicacion.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Editar Publicación</h1>
+    <form action="#" method="POST">
+      <button type="submit" class="cierre-sesion">Cerrar Sesión</button>
+    </form>
+  </header>
+  <main>
+    <form action="#" method="post" class="formulario">
+      <div class="fotos">
+        <label for="fotos">Actualizar fotos:</label>
+        <input type="file" id="fotos" name="fotos" accept="image/*" multiple>
+        <p>Sube de 5 a 15 imágenes (opcional).</p>
+      </div>
+
+      <div class="campo">
+        <label for="nombre">Nombre del inmueble:</label>
+        <input type="text" id="nombre" name="nombre" maxlength="30" required>
+      </div>
+
+      <div class="campo">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" maxlength="500" required></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="reglas">Reglas:</label>
+        <textarea id="reglas" name="reglas" maxlength="500"></textarea>
+        <div class="checkboxes">
+          <p>Restricciones:</p>
+          <label><input type="checkbox" name="restricciones" value="mascotas"> Mascotas</label>
+          <label><input type="checkbox" name="restricciones" value="ruido"> Ruido</label>
+          <label><input type="checkbox" name="restricciones" value="visitas"> Visitas</label>
+          <label><input type="checkbox" name="restricciones" value="fumar"> Fumar</label>
+          <label><input type="checkbox" name="restricciones" value="fiestas"> Fiestas</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="informacion">Información adicional:</label>
+        <textarea id="informacion" name="informacion" maxlength="500"></textarea>
+        <div class="checkboxes">
+          <p>Servicios incluidos:</p>
+          <label><input type="checkbox" name="servicios" value="wifi"> Wifi</label>
+          <label><input type="checkbox" name="servicios" value="amueblado"> Amueblado</label>
+          <label><input type="checkbox" name="servicios" value="agua"> Agua potable</label>
+          <label><input type="checkbox" name="servicios" value="luz"> Luz</label>
+          <label><input type="checkbox" name="servicios" value="gas"> Gas</label>
+        </div>
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion" required>
+      </div>
+
+      <div class="campo">
+        <label for="costo">Costo en MXN:</label>
+        <input type="number" id="costo" name="costo" placeholder="$" required>
+      </div>
+
+      <button type="submit" class="btn-publicar">GUARDAR CAMBIOS</button>
+    </form>
+  </main>
+</body>
+</html>
