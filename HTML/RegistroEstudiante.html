@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de estudiante</title>
     <link rel="stylesheet" href="Diseños/Esilos.css">
+    <script src="Scripts/RegistroEstudiante.js"></script>
 </head>
 <body>
     <div class="fondo">
@@ -25,11 +26,11 @@
                 </div>
                 <div class="entrada">
                     <br><p align="left">Fecha de nacimiento*</p>
-                    <input type="text" placeholder="DD/MM/AAAA" maxlength="10" required pattern="\d{2} \d{2} \d{4}">
+                    <input type="date" placeholder="DD/MM/AAA" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Teléfono del estudiante*</p>
-                    <input type="text" placeholder="Número telefónico" required>
+                    <input type="tel" placeholder="Número telefónico" minlength="10" maxlength="14" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Correo insitucional*</p>

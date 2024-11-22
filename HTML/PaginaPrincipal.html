@@ -3,38 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inmuebles ESIME Culhuacán</title>
-    <link rel="stylesheet" href="Diseños/Esilos.css">
+    <title>Página principal</title>
+    <link rel="stylesheet" href="Diseños/Estilos-principal.css">
+    <script src="Scripts/Principal.js"></script>
 </head>
 <body>
 
     <header class="header">
-        <img src="IMG/Logo ESIME.jpg" alt="Logo ESIME" class="logo">
-        <h1 class="titulo">INMUEBLES ESIME CULHUACÁN</h1>
-        <div class="menu-usuario">
+     <div class="menu-usuario">
             <label for="menu" class="icono-usuario">
             <img src="IMG/Usuario.png" alt="Icono de usuario" class="Usuario">
             </label>
             <input type="checkbox" id="menu" class="menu-checkbox">
             <div class="despliegue" id="despliegue-menu">
-                <a href="#">Ver perfil</a>
+                <br><p>NOMBRE</p><br>
+                    <a href="Perfil-Estudiante.html" class="perfil-estudiante">Ver perfil</a>
+                    <a href="Guardado.html" class="guardado">Guardados</a>
+                    <a href="#" class="cierre-sesion-menu" onclick="logout()">Cerrar Sesión</a>
             </div>
         </div>
+
+        <div class="menu-busqueda">
+            <input type="text" placeholder="search" class="barra-busqueda">
+            <div class="categorias">
+                <button class="categoria">Casa</button>
+                <button class="categoria">Departamento</button>
+                <button class="categoria">Habitación</button>
+            </div>
+            <div class="filtros">
+                <button class="btn-filtros">Buscar por</button>
+                <div class="menu-filtros">
+                    <p>Precio vivienda</p>
+                    <ul>
+                        <li>Menor a mayor costo</li>
+                        <li>Mayor a menor costo</li>
+                    </ul>
+                    <p>Fecha de publicación</p>
+                    <ul>
+                        <li>Más antiguas</li>
+                        <li>Más recientes</li>
+                    </ul>
+                    <p>Calificación</p>
+                    <ul>
+                        <li>Mejor a peor promedio</li>
+                        <li>Peor a mejor promedio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <form action="#" method="POST">
+            <button type="submit" class="cierre-sesion">Cerrar Sesión</button>
+        </form>
+
     </header>
 
     <main class="contenido">
-        <section class="property">
-            <h2>Casa 1</h2>
-            <img src="" alt="Imagen de Casa 1" class="Propiedades">
-        </section>
-        <section class="property">
-            <h2>Casa 2</h2>
-            <img src="" alt="Imagen de Casa 2" class="Propiedades">
-        </section>
-        <section class="property">
-            <h2>Casa 3</h2>
-            <img src="" alt="Imagen de Casa 3" class="Propiedades">
-        </section>
+        <div class="publicacion">
+            <button class="flecha izquierda">&lt;</button>
+            <img src="IMG/casa1.jpg" alt="Imagen de casa" class="imagen-casa">
+            <button class="flecha derecha">&gt;</button>
+            <div class="info-casa">
+                <span class="nombre-casa">Nombre casa</span>
+                <span class="precio-casa">$MXN (por mes)</span>
+                <span class="calificacion-casa">⭐Calif</span>
+                <button class="boton-ver"><a href="Publicaciones.html">Ver</a></button>
+            </div>
+        </div>        
     </main>
 
 </body>

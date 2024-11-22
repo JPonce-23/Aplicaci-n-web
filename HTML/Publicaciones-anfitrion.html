@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis publicaciones</title>
+    <link rel="stylesheet" href="Diseños/Estilos-publicaciones-anfitrion.css">
+    <script src="Scripts/PublicacionesAnfitrion.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="menu-usuario">
+            <label for="menu-usuario" class="icono-usuario">
+                <img src="IMG/Usuario.png" alt="Icono de usuario" class="Usuario">
+            </label>
+            <input type="checkbox" id="menu-usuario" class="menu-checkbox">
+            <div class="despliegue" id="despliegue-menu-usuario">
+                <br><p>NOMBRE</p><br>
+                    <a href="Perfil-Anfitrion.html" class="perfil-anfitrion">Ver perfil</a>
+                    <a href="#" class="cierre-sesion-menu" onclick="logout()">Cerrar Sesión</a>
+            </div>
+        </div>
+    
+        <h1 class="titulo">Mis publicaciones</h1>
+    
+        <div class="menu-notificaciones">
+            <label for="menu-notificaciones" class="icono-notificaciones">
+                <img src="IMG/Icono-mensaje.png" alt="Icono de usuario" class="notificaciones">
+            </label>
+            <input type="checkbox" id="menu-notificaciones" class="menu-checkbox">
+            <div class="despliegue" id="despliegue-menu-notificaciones">
+                <p>INTERESADO</p>
+                <br>
+                <p>INTERESADO</p>
+                <br>
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="contenido">
+    <section class="propiedad">
+        <div class="publicacion">
+            <h2>Casa 1</h2>
+            <button class="flecha izquierda">&lt;</button>
+            <img src="IMG/casa1.jpg" alt="Imagen de casa" class="imagen-casa">
+            <button class="flecha derecha">&gt;</button>
+            <div class="info-casa">
+                <span class="nombre-casa">Nombre casa</span>
+                <span class="precio-casa">$MXN (por mes)</span>
+                <span class="calificacion-casa">⭐Calif</span>
+                <button class="boton-ver"><a href="#">Editar</a></button>
+            </div>
+        </div> 
+    </section>    
+    
+    <section class="propiedad">
+        <div class="publicacion">
+            <h2>Casa 2</h2>
+            <button class="flecha izquierda">&lt;</button>
+            <img src="IMG/casa1.jpg" alt="Imagen de casa" class="imagen-casa">
+            <button class="flecha derecha">&gt;</button>
+            <div class="info-casa">
+                <span class="nombre-casa">Nombre casa</span>
+                <span class="precio-casa">$MXN (por mes)</span>
+                <span class="calificacion-casa">⭐Calif</span>
+                <button class="boton-ver"><a href="#">Editar</a></button>
+            </div>
+        </div> 
+    </section> 
+
+    <section class="propiedad">
+        <div class="publicacion">
+            <h2>Casa 3</h2>
+            <button class="flecha izquierda">&lt;</button>
+            <img src="IMG/casa1.jpg" alt="Imagen de casa" class="imagen-casa">
+            <button class="flecha derecha">&gt;</button>
+            <div class="info-casa">
+                <span class="nombre-casa">Nombre casa</span>
+                <span class="precio-casa">$MXN (por mes)</span>
+                <span class="calificacion-casa">⭐Calif</span>
+                <button class="boton-ver"><a href="#">Editar</a></button>
+            </div>
+        </div> 
+    </section> 
+
+    <section class="propiedad">
+        <div class="publicacion">
+            <h2>Subir nueva publicación</h2>
+            <a href="Crear-publicacion.html">
+                <img src="IMG/Mas.png" alt="Crear nueva publicación" class="crear-publicacion">
+            </a>
+        </div> 
+    </section> 
+
+    </main>
+
+</body>
+</html>

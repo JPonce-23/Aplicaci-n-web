@@ -1,0 +1,170 @@
+/* DETALLES DEL INMUEBLE */
+.detalle-inmueble 
+{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-detalle 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.nombre-inmueble 
+{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.calificacion 
+{
+    font-size: 18px;
+    color: #f39c12;
+}
+
+.disponibilidad 
+{
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--color-negro);
+}
+
+.guardar 
+{
+    padding: 5px 10px;
+    border: 1px solid var(--borde);
+    background-color: var(--color-gris);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.galeria 
+{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.imagen-galeria 
+{
+    width: 18%;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+}
+
+.detalles .seccion 
+{
+    margin-bottom: 20px;
+}
+
+.titulo-seccion 
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.toggle-seccion 
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contenido-seccion 
+{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.foto-anfitrion 
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.precio 
+{
+    font-size: 18px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: 20px;
+}
+
+.comentarios 
+{
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.me-interesa 
+{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #a43030;
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.me-interesa:hover 
+{
+    background-color: #980707;
+}
+
+
+/* ESTILOS PARA SECCIONES COLAPSABLES */
+.seccion 
+{
+    margin-bottom: 20px;
+}
+
+details 
+{
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--color-gris);
+    cursor: pointer;
+}
+
+summary 
+{
+    font-size: 16px;
+    font-weight: bold;
+    list-style: none;
+    cursor: pointer;
+}
+
+summary:hover 
+{
+    color: #6c6c6c;
+}
+
+details[open] 
+{
+    background-color: var(--color-blanco);
+}
+
+details p, details ul 
+{
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--color-negro);
+}

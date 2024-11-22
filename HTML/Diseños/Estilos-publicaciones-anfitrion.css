@@ -1,0 +1,374 @@
+/* VARIABLES GLOBALES */
+:root 
+{
+    --Fuente: 'Arial', sans-serif;
+    --color-negro: #333;
+    --color-blanco: #fff;
+    --color-gris: #f4f4f4;
+    --borde: #ccc;
+}
+
+body 
+{
+    font-family: var(--Fuente);
+    color: var(--color-negro);
+    background-color: var(--color-blanco);
+    height: 100vh;
+    overflow-y: auto; 
+    color: var(--color-negro);
+}
+
+.header 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7d4444;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* Estilos del título */
+.titulo 
+{
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Estilo de los menús */
+.menu-usuario, .menu-notificaciones 
+{
+    position: relative;
+}
+
+.cierre-sesion-menu
+{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.cierre-sesion-menu:hover 
+{
+    transform: scale(1.05);
+}
+.perfil-anfitrion
+{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.perfil-anfitrion:hover 
+{
+    transform: scale(1.05);
+}
+
+/* Iconos */
+.icono-usuario img 
+{
+    width: 70px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.icono-notificaciones img 
+{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* Checkbox oculto */
+.menu-checkbox 
+{
+    display: none;
+}
+
+/* Despliegue de menús */
+.despliegue 
+{
+    display: none;
+    position: absolute;
+    top: 60px;
+    background-color: #a72525;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 200px;
+    padding: 10px;
+}
+
+/* Estilo de los enlaces */
+.despliegue a 
+{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 8px 10px;
+    border-bottom: 1px solid #555;
+}
+
+.despliegue a:hover 
+{
+    background-color: #925555;
+}
+
+/* Estilo de las notificaciones */
+.despliegue p 
+{
+    margin: 5px 0;
+    padding: 8px 10px;
+    border-bottom: 1px solid #555;
+}
+
+.despliegue p:last-child 
+{
+    border-bottom: none;
+}
+
+/* Mostrar el menú al marcar el checkbox */
+#menu-usuario:checked + #despliegue-menu-usuario,
+#menu-notificaciones:checked + #despliegue-menu-notificaciones 
+{
+    display: block;
+}
+
+/* Posicionamiento de los menús */
+.menu-usuario .despliegue 
+{
+    left: 0;
+}
+
+.menu-notificaciones .despliegue 
+{
+    right: 0;
+}
+
+/* ESTILOS PARA EL CONTENIDO */
+.contenido 
+{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.propiedad 
+{
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: var(--color-gris);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+}
+
+.propiedad h2 
+{
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: var(--color-negro);
+}
+
+.Propiedades 
+{
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+}
+
+/* AJUSTE PARA PANTALLAS PEQUEÑAS */
+@media (max-width: 768px) 
+{
+    .titulo 
+    {
+        font-size: 20px;
+    }
+    
+    .logo 
+    {
+        height: 50px;
+    }
+    
+    .propiedad 
+    {
+        width: 90%;
+    }
+}
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* RECUADRO */
+.recuadro 
+{
+    background-color: var(--color-blanco);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* BOTON */
+.button 
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/*FORM ESTILOS*/
+form 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.entrada 
+{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* PUBLICACIONES */
+.publicacion 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--color-blanco);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 300px;
+    margin: 20px auto;
+}
+
+.imagen-casa 
+{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    margin-bottom: 10px;
+}
+
+.flecha 
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-blanco);
+    border: 1px solid var(--borde);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-negro);
+}
+
+.flecha:hover 
+{
+    background-color: var(--color-gris);
+}
+
+.flecha.izquierda 
+{
+    left: 10px;
+}
+
+.flecha.derecha 
+{
+    right: 10px;
+}
+
+.info-casa 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--color-negro);
+}
+
+.info-casa .nombre-casa 
+{
+    flex: 1;
+    font-weight: bold;
+}
+
+.info-casa .precio-casa 
+{
+    flex: 1;
+    text-align: center;
+}
+
+.info-casa .calificacion-casa 
+{
+    flex: 1;
+    text-align: right;
+}
+
+.boton-ver 
+{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boton-ver:hover {
+    background-color: var(--color-gris);
+}
+
+
+.crear-publicacion
+{
+    display: inline-block;
+      cursor: pointer;
+      overflow: hidden;
+      width: 150px;
+      height: auto;
+}
+
+.crear-publicacion
+{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* SOMBRA */
+}

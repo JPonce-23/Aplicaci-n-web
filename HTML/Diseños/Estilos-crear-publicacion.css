@@ -1,0 +1,115 @@
+body 
+{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  header 
+  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  h1 
+  {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .cierre-sesion
+{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 55px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    top: 0px;
+    left: 20px;
+}
+.cierre-sesion:hover 
+{
+    transform: scale(1.05);
+}
+ 
+
+
+  main 
+  {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formulario 
+  {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .campo 
+  {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label 
+  {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input, textarea 
+  {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  textarea 
+  {
+    resize: vertical;
+  }
+  
+  .checkboxes label 
+  {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .btn-publicar 
+  {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #a03535;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .btn-publicar:hover 
+  {
+    background-color: #0056b3;
+  }
+  
+  .fotos p 
+  {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #230d0d;
+  }
+  
