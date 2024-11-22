@@ -3,8 +3,8 @@
 {
     --Fuente: 'Arial', sans-serif;
     --color-negro: #333;
-    --color-blanco: #fff;
-    --color-gris: #f4f4f4;
+    --color-blanco: #ffffffa3;
+    --color-gris: #f4f4f451;
     --borde: #ccc;
 }
 
@@ -61,7 +61,7 @@
     background-color: var(--color-blanco);
     border: 1px solid var(--borde);
     border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(100, 27, 27, 0.295);
     display: none;
     flex-direction: column;
 }
@@ -168,7 +168,7 @@ body
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(1, 68, 15, 0.5); /* FONDO SEMITRANSPARENTE */
+    background: rgba(65, 129, 78, 0.311); /* FONDO SEMITRANSPARENTE */
     padding: 20px;
 }
 
@@ -263,7 +263,7 @@ form
     margin-top: 10px;
     width: 180px;
     height: 180px;
-    border: 1px solid #ccc;
+    border: 1px solid #17b722ca;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -294,8 +294,8 @@ form
     font-size: 16px;
     text-align: center;
     flex: 1;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #f9f9f9cb;
+    color: #333333;
 }
 
 .sexo-opciones input[type="radio"]:checked + label

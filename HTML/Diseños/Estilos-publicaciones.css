@@ -23,6 +23,7 @@
 {
     font-size: 24px;
     font-weight: bold;
+    color: green;
 }
 
 .calificacion 
@@ -100,7 +101,7 @@
 {
     font-size: 18px;
     font-weight: bold;
-    color: #27ae60;
+    color: #41b7d1;
     margin-top: 20px;
 }
 
@@ -116,7 +117,8 @@
     margin: 20px auto;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #a43030;
+    background-color: #92b2bc
+    ;
     color: var(--color-blanco);
     border: none;
     border-radius: 5px;

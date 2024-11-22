@@ -3,7 +3,7 @@
 {
     --Fuente: 'Arial', sans-serif;
     --color-negro: #333;
-    --color-blanco: #fff;
+    --color-azul-cielo: #2bb5cd24;
     --color-gris: #f4f4f4;
     --borde: #ccc;
 }
@@ -12,7 +12,7 @@ body
 {
     font-family: var(--Fuente);
     color: var(--color-negro);
-    background-color: var(--color-blanco);
+    background-color: var(--color-azul-cielo);
     height: 100vh;
     overflow-y: auto; 
     color: var(--color-negro);
@@ -23,7 +23,7 @@ body
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #7d4444;
+    background-color: #537d86;
     color: rgb(255, 255, 255);
     padding: 10px 20px;
     position: relative;
@@ -95,7 +95,7 @@ body
     display: none;
     position: absolute;
     top: 60px;
-    background-color: #a72525;
+    background-color: #2bb5cdaf;
     color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -217,7 +217,7 @@ body
 /* RECUADRO */
 .recuadro 
 {
-    background-color: var(--color-blanco);
+    background-color: var(--color-azul-cielo);
     padding: 20px;
     width: 100%;
     max-width: 400px;
@@ -263,7 +263,7 @@ form
     border: 1px solid var(--borde);
     border-radius: 10px;
     padding: 15px;
-    background-color: var(--color-blanco);
+    background-color: var(--color-azul-cielo);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     width: 300px;
@@ -283,7 +283,7 @@ form
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: var(--color-blanco);
+    background-color: var(--color-azul-cielo);
     border: 1px solid var(--borde);
     border-radius: 50%;
     height: 30px;
@@ -347,7 +347,7 @@ form
     bottom: 15px;
     right: 15px;
     padding: 5px 10px;
-    background-color: var(--color-blanco);
+    background-color: var(--color-azul-cielo);
     border: 1px solid var(--borde);
     border-radius: 5px;
     font-size: 14px;

@@ -3,15 +3,15 @@ body
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #e4e9ea;
   }
   
   .perfil-container 
   {
     max-width: 500px;
     margin: 50px auto;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #a2d8e9c1;
+    border: 1px solid #dddddd4a;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@ body
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    background-color: #f1f1f1;
+    background-color: #3595a5dc;
     border-bottom: 1px solid #ddd;
   }
   
@@ -59,7 +59,7 @@ body
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid #ddd;
+    border: 2px solid #1dc267ca;
   }
   
   .nombre 
@@ -81,7 +81,7 @@ body
     padding: 10px 20px;
     font-size: 14px;
     color: #fff;
-    background-color: #cd5353;
+    background-color: #1dc267ca;
     border: none;
     border-radius: 4px;
     cursor: pointer;
