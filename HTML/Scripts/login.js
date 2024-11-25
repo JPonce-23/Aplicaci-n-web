@@ -1,12 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => 
-    {
+document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
     const emailInput = document.querySelector('input[type="email"]');
     const passwordInput = document.querySelector('input[type="password"]');
 
-    form.addEventListener("submit", (event) => {
-        // Evitar el envío del formulario si hay errores
-        event.preventDefault();
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Prevenir el envío del formulario por defecto
 
         let errors = [];
 
@@ -22,13 +20,38 @@ document.addEventListener("DOMContentLoaded", () =>
             errors.push("La contraseña no puede estar vacía.");
         }
 
-        // Mostrar errores o enviar el formulario
+        // Mostrar errores si existen
         if (errors.length > 0) {
             alert(errors.join("\n"));
-        } else {
-            // Aquí puedes manejar el envío, como redirigir o realizar una petición a un servidor
-            alert("Inicio de sesión exitoso");
-            form.submit(); // Opcional: solo si decides no manejar el envío con JS
+            return;
+        }
+
+        // Enviar los datos al backend
+        const loginData = {
+            email: emailInput.value,
+            password: passwordInput.value,
+        };
+
+        try {
+            const response = await fetch("http://localhost:3000/login", { // Cambia la URL según tu configuración
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("Inicio de sesión exitoso.");
+                window.location.href = "Dashboard.html"; // Redirigir a otra página después del login
+            } else {
+                alert(`Error: ${result.message}`);
+            }
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+            alert("Ocurrió un problema al conectar con el servidor.");
         }
     });
 

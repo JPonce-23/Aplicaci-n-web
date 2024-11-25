@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleConfirmPassword = document.getElementById("mostrar-conf-contraseña");
 
     // Validar el formulario al enviarlo
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault(); // Evita el envío por defecto
 
         let errors = [];
@@ -34,9 +34,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (errors.length > 0) {
             alert(errors.join("\n"));
+            return;
+        }
+
+        // Crear objeto de datos del anfitrión
+        const formData = new FormData(form); // Captura todos los datos del formulario
+        const datosAnfitrion = {
+            nombre: formData.get("Nombre(s)"),
+            apellidoPaterno: formData.get("Apellido paterno"),
+            apellidoMaterno: formData.get("Apellido materno"),
+            fechaNacimiento: formData.get("Fecha de nacimiento"),
+            telefono: formData.get("Teléfono"),
+            correo: emailInput.value,
+            contraseña: passwordInput.value,
+            sexo: formData.get("sexo"),
+        };
+
+        // Adjuntar la foto de perfil si existe
+        const file = fotoInput.files[0];
+        if (file) {
+            datosAnfitrion.foto = await convertirImagenABase64(file);
         } else {
-            alert("Registro exitoso");
-            form.submit(); // Enviar formulario si todo es válido
+            datosAnfitrion.foto = null; // O un valor predeterminado
+        }
+
+        try {
+            // Enviar datos al backend
+            const response = await fetch("http://localhost:3000/api/registrar-anfitrion", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(datosAnfitrion),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("Registro exitoso. Ahora puede iniciar sesión.");
+                window.location.href = "inicio-sesion.html"; // Redirigir al inicio de sesión
+            } else {
+                alert(data.message || "Error al registrar al anfitrión.");
+            }
+        } catch (error) {
+            console.error("Error al registrar:", error);
+            alert("Ocurrió un error. Por favor, inténtelo más tarde.");
         }
     });
 
@@ -71,4 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleConfirmPassword.addEventListener("click", () => {
         confirmPasswordInput.type = confirmPasswordInput.type === "password" ? "text" : "password";
     });
+
+    // Convertir imagen a Base64
+    async function convertirImagenABase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
+        });
+    }
 });

@@ -7,8 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const togglePassword = document.getElementById("mostrar-contraseña");
     const toggleConfirmPassword = document.getElementById("mostrar-conf-contraseña");
 
+    // Elementos del modal
+    const modal = document.getElementById("codigoModal");
+    const closeModal = document.querySelector(".close");
+    const timerDisplay = document.getElementById("timer");
+    const generarNuevoCodigoLink = document.getElementById("generarNuevoCodigo");
+    const enviarCodigoButton = document.getElementById("enviarCodigo");
+    const codigoInputs = document.querySelectorAll(".codigo-box");
+
+    let tiempoRestante = 300; // 5 minutos en segundos
+    let codigoGenerado = null; // Código de verificación
+    let temporizador;
+
     // Validar el formulario al enviarlo
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault(); // Evita el envío por defecto
 
         let errors = [];
@@ -34,9 +46,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (errors.length > 0) {
             alert(errors.join("\n"));
-        } else {
-            alert("Registro exitoso");
-            form.submit(); // Enviar formulario si todo es válido
+            return;
+        }
+
+        // Preparar datos para el registro
+        const formData = new FormData(form); // Obtiene todos los datos del formulario
+        const registroData = {
+            nombre: formData.get("Nombre(s)"),
+            apellidoPaterno: formData.get("Apellido paterno"),
+            apellidoMaterno: formData.get("Apellido materno"),
+            fechaNacimiento: formData.get("Fecha de nacimiento"),
+            telefono: formData.get("Teléfono del estudiante"),
+            correo: formData.get("Correo insitucional"),
+            contraseña: passwordInput.value,
+            sexo: formData.get("sexo"),
+        };
+
+        try {
+            // Enviar solicitud al backend
+            const response = await fetch("http://localhost:3000/api/registrar-estudiante", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(registroData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Almacenar el código generado y abrir el modal
+                codigoGenerado = data.codigoVerificacion;
+                abrirModal();
+            } else {
+                throw new Error(data.message || "Error al registrar al estudiante.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Ocurrió un error. Por favor, inténtelo nuevamente más tarde.");
         }
     });
 
@@ -70,5 +115,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleConfirmPassword.addEventListener("click", () => {
         confirmPasswordInput.type = confirmPasswordInput.type === "password" ? "text" : "password";
+    });
+
+    // Modal - Abrir y cerrar
+    function abrirModal() {
+        modal.style.display = "block";
+        iniciarTemporizador();
+    }
+
+    closeModal.onclick = function () {
+        modal.style.display = "none";
+        clearInterval(temporizador); // Detener temporizador
+    };
+
+    // Generar un nuevo código
+    generarNuevoCodigoLink.addEventListener("click", async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch("http://localhost:3000/api/generar-nuevo-codigo", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ correo: form.querySelector('input[type="email"]').value }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                codigoGenerado = data.codigoVerificacion;
+                alert("Nuevo código generado. Revisa tu correo.");
+                iniciarTemporizador();
+            } else {
+                throw new Error(data.message || "Error al generar el código.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Ocurrió un error al generar un nuevo código.");
+        }
+    });
+
+    // Iniciar el temporizador
+    function iniciarTemporizador() {
+        generarNuevoCodigoLink.style.display = "none"; // Ocultar enlace de nuevo código
+        tiempoRestante = 300; // Reiniciar a 5 minutos
+        temporizador = setInterval(() => {
+            const minutos = Math.floor(tiempoRestante / 60);
+            const segundos = tiempoRestante % 60;
+            timerDisplay.textContent = `${minutos.toString().padStart(2, "0")}:${segundos
+                .toString()
+                .padStart(2, "0")}`;
+            tiempoRestante--;
+
+            if (tiempoRestante < 0) {
+                clearInterval(temporizador);
+                timerDisplay.textContent = "00:00";
+                generarNuevoCodigoLink.style.display = "block"; // Mostrar enlace
+            }
+        }, 1000);
+    }
+
+    // Validar el código ingresado
+    enviarCodigoButton.addEventListener("click", () => {
+        const codigoIngresado = Array.from(codigoInputs)
+            .map((input) => input.value)
+            .join("");
+        if (codigoIngresado === codigoGenerado) {
+            alert("¡Código correcto! Registro completado.");
+            modal.style.display = "none"; // Cerrar modal
+            window.location.href = "inicio-sesion.html";
+        } else {
+            alert("El código ingresado es incorrecto.");
+        }
     });
 });

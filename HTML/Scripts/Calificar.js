@@ -1,12 +1,24 @@
-// Código para la funcionalidad de calificación
 document.addEventListener("DOMContentLoaded", () => {
     const inmuebleRadios = document.querySelectorAll('input[name="calificacion"]');
     const anfitrionRadios = document.querySelectorAll('input[name="calificacion-a"]');
     const comentarioInput = document.getElementById("descripcion");
     const submitButton = document.querySelector(".boton");
+    const tokenInput = document.getElementById("token");
 
-    submitButton.addEventListener("click", (e) => {
-        e.preventDefault(); // Evitar el envío del formulario por defecto
+    // EXTRAE TOKEN DEL URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
+    if (!token) {
+        alert("El enlace de calificación no es válido.");
+        return;
+    }
+
+    // AGREGA EL TOKEN AL CAMPO OCULTO DEL FORMULARIO
+    tokenInput.value = token;
+
+    submitButton.addEventListener("click", async (e) => {
+        e.preventDefault(); 
 
         const selectedInmuebleRating = getSelectedRadioValue(inmuebleRadios);
         const selectedAnfitrionRating = getSelectedRadioValue(anfitrionRadios);
@@ -17,21 +29,39 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Aquí puedes enviar los datos al servidor o procesarlos como desees
+        // ENVÍA DATOS
         const calificacionData = {
-            calificacionInmueble: selectedInmuebleRating,
-            calificacionAnfitrion: selectedAnfitrionRating,
-            comentario: comentario || "Sin comentario"
+            token, // TOKEN DEL ENLACE
+            calificacionInmueble: parseInt(selectedInmuebleRating),
+            calificacionAnfitrion: parseInt(selectedAnfitrionRating),
+            comentario: comentario || "Sin comentario",
         };
 
-        console.log("Datos enviados:", calificacionData);
+        try {
+            const response = await fetch("https://api.miapp.com/calificaciones", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(calificacionData),
+            });
 
-        // Simular envío exitoso y reiniciar formulario
-        alert("¡Gracias por tu calificación!");
-        resetForm(inmuebleRadios, anfitrionRadios, comentarioInput);
+            if (!response.ok) {
+                throw new Error("Error al enviar la calificación");
+            }
+
+            const result = await response.json();
+            console.log("Respuesta del servidor:", result);
+
+            alert("¡Gracias por tu calificación!");
+            resetForm(inmuebleRadios, anfitrionRadios, comentarioInput);
+        } catch (error) {
+            console.error("Error al enviar la calificación:", error);
+            alert("Hubo un problema al enviar tu calificación. Por favor, inténtalo nuevamente.");
+        }
     });
 
-    // Obtener el valor seleccionado de un grupo de radios
+    
     function getSelectedRadioValue(radioButtons) {
         for (const radio of radioButtons) {
             if (radio.checked) {
@@ -41,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return null;
     }
 
-    // Reiniciar formulario
+    
     function resetForm(inmuebleRadios, anfitrionRadios, comentarioInput) {
         inmuebleRadios.forEach(radio => (radio.checked = false));
         anfitrionRadios.forEach(radio => (radio.checked = false));

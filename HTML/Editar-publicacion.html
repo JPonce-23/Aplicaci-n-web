@@ -23,6 +23,20 @@
       </div>
 
       <div class="campo">
+        <label for="estado">Estado del inmueble:</label>
+        <select id="estado" name="estado" required>
+          <option value="disponible">Disponible</option>
+          <option value="no_disponible">No disponible</option>
+        </select>
+      </div>
+      
+      <div class="campo" id="fecha-disponibilidad-campo" style="display: none;">
+        <label for="fecha-disponibilidad">Disponible hasta:</label>
+        <input type="date" id="fecha-disponibilidad" name="fecha-disponibilidad">
+      </div>
+      
+
+      <div class="campo">
         <label for="nombre">Nombre del inmueble:</label>
         <input type="text" id="nombre" name="nombre" maxlength="30" required>
       </div>
