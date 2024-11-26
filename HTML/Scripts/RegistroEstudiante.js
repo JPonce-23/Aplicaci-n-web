@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Validar formato del correo
-        const emailInput = form.querySelector('input[type="email"]');
+        const emailInput = form.querySelector('input[name="correo"]');
         if (!validateEmail(emailInput.value)) {
             errors.push("El correo electrónico no es válido.");
         }
@@ -51,23 +51,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Preparar datos para el registro
         const formData = new FormData(form); // Obtiene todos los datos del formulario
+
+        // Recoger los datos del formulario en un objeto
         const registroData = {
-            nombre: formData.get("Nombre(s)"),
-            apellidoPaterno: formData.get("Apellido paterno"),
-            apellidoMaterno: formData.get("Apellido materno"),
-            fechaNacimiento: formData.get("Fecha de nacimiento"),
-            telefono: formData.get("Teléfono del estudiante"),
-            correo: formData.get("Correo insitucional"),
+            nombre: formData.get("nombre"),
+            apellidoPaterno: formData.get("apellidoPaterno"),
+            apellidoMaterno: formData.get("apellidoMaterno"),
+            fechaNacimiento: formData.get("fechaNacimiento"),
+            telefono: formData.get("telefono"),
+            correo: formData.get("correo"),
             contraseña: passwordInput.value,
             sexo: formData.get("sexo"),
         };
+
+        // Si se ha seleccionado una foto de perfil, agregarla al objeto
+        if (fotoInput.files[0]) {
+            registroData.fotoPerfil = fotoInput.files[0];
+        }
 
         try {
             // Enviar solicitud al backend
             const response = await fetch("http://localhost:3000/api/registrar-estudiante", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(registroData),
+                body: JSON.stringify(registroData), // Enviar el objeto con los datos del formulario
             });
 
             const data = await response.json();
@@ -135,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("http://localhost:3000/api/generar-nuevo-codigo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ correo: form.querySelector('input[type="email"]').value }),
+                body: JSON.stringify({ correo: form.querySelector('input[name="correo"]').value }),
             });
 
             const data = await response.json();

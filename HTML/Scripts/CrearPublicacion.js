@@ -11,30 +11,30 @@ document.addEventListener("DOMContentLoaded", () => {
     formulario.addEventListener("submit", async (e) => {
         e.preventDefault(); 
 
-        // VALIDA IMÁGENES
+        // Valida imágenes (debe haber entre 5 y 15)
         const archivos = fotosInput.files;
         if (archivos.length < 5 || archivos.length > 15) {
             alert("Debes subir entre 5 y 15 imágenes.");
             return;
         }
 
-        // VALIDA CAMPOS VACÍOS
+        // Valida campos vacíos
         if (!nombreInput.value.trim() || !descripcionTextarea.value.trim() ||
             !ubicacionInput.value.trim() || !costoInput.value.trim()) {
             alert("Por favor, completa todos los campos obligatorios.");
             return;
         }
 
-        // COSTO
+        // Valida costo
         if (isNaN(costoInput.value) || parseFloat(costoInput.value) <= 0) {
             alert("Por favor, ingresa un costo válido.");
             return;
         }
 
-        // PREPARA DATOS A ENVIAR
+        // Prepara los datos a enviar
         const formData = new FormData();
         Array.from(archivos).forEach((file) => {
-            formData.append("fotos", file); // AGREGA IMÁGENES
+            formData.append("fotos", file); // Agrega imágenes
         });
 
         const datos = {
@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
             servicios: [...document.querySelectorAll("input[name='servicios']:checked")].map(el => el.value),
         };
 
-        
         formData.append("datos", JSON.stringify(datos));
 
         try {
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    
+    // Limitación de caracteres para los campos de texto
     [descripcionTextarea, reglasTextarea, informacionTextarea].forEach((textarea) => {
         textarea.addEventListener("input", () => {
             if (textarea.value.length > 500) {

@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
             errors.push("Las contraseñas no coinciden.");
         }
 
+        if (passwordInput.value.length < 6 || passwordInput.value.length > 12) {
+            errors.push("La contraseña debe tener entre 6 y 12 caracteres.");
+        }
+
         if (errors.length > 0) {
             alert(errors.join("\n"));
             return;
@@ -47,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             telefono: formData.get("Teléfono"),
             correo: emailInput.value,
             contraseña: passwordInput.value,
-            sexo: formData.get("sexo"),
+            sexo: formData.get("sexo") || "indefinido", // Asegurarse de que siempre haya un valor
         };
 
         // Adjuntar la foto de perfil si existe

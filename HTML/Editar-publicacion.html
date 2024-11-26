@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Publicación</title>
   <link rel="stylesheet" href="Diseños/Estilos-crear-publicacion.css">
-  <script src="Scripts/EditarPublicacion.js"></script>
+  <script src="Scripts/EditarPublicacion.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Editar Publicación</h1>
-    <form action="#" method="POST">
+    <form action="http://localhost:3000/api/logout" method="POST">
       <button type="submit" class="cierre-sesion">Cerrar Sesión</button>
     </form>
   </header>
+
   <main>
-    <form action="#" method="post" class="formulario">
+    <form action="#" method="post" class="formulario" enctype="multipart/form-data">
       <div class="fotos">
         <label for="fotos">Actualizar fotos:</label>
         <input type="file" id="fotos" name="fotos" accept="image/*" multiple>
@@ -35,7 +36,6 @@
         <input type="date" id="fecha-disponibilidad" name="fecha-disponibilidad">
       </div>
       
-
       <div class="campo">
         <label for="nombre">Nombre del inmueble:</label>
         <input type="text" id="nombre" name="nombre" maxlength="30" required>

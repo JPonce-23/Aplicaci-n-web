@@ -8,7 +8,7 @@
     <script src="Scripts/Publicacion.js"></script>
 </head>
 <body>
-    <div class="detalle-inmueble">
+    <div class="detalle-inmueble" data-inmueble-id="12345"> 
         <header class="header-detalle">
             <h1 class="nombre-inmueble">Nombre del Inmueble</h1>
             <div class="calificacion">
@@ -17,8 +17,8 @@
            
             <div class="estado-publicacion">
                 <p id="estado-publicacion">Estado: Disponible</p>
-                <p id="fecha-disponibilidad" style="display: none;">Disponible hasta: <span></span></p>
-              </div>              
+                <p id="fecha-disponibilidad" style="display: none;">Disponible hasta: <span id="fecha-disponibilidad-fecha"></span></p>
+              </div>             
 
             <button class="guardar">Guardar</button>
         </header>
@@ -33,13 +33,11 @@
         <section class="detalles">
 
             <div class="seccion">
-    <details>
-        <summary>Descripción del inmueble</summary>
-        <p>
-            Dimensiones: 120m², excelente iluminación natural, amueblado con todo lo necesario. Comentarios del anfitrión: "Ideal para estudiantes".
-        </p>
-    </details>
-</div>
+                <details>
+                    <summary>Descripción del inmueble</summary>
+                    <p id="descripcion"></p>
+                </details>
+            </div>
 
 <div class="seccion">
     <details>
@@ -76,22 +74,24 @@
     </details>
 </div>
 
-            <div class="seccion">
-                <span>Datos del propietario:</span>
-                <div>
-                    <img src="IMG/perfil.jpg" alt="Foto del anfitrión" class="foto-anfitrion">
-                    <a href="VerPerfilAnfitrion.html" class="ver-perfil">Ver perfil</a>
-                </div>
-            </div>
-            <div class="precio">
-                <span>Costo por mes: $8,000 MXN</span>
-            </div>
+<div class="seccion">
+    <span>Datos del propietario:</span>
+    <div>
+        <img src="IMG/perfil.jpg" alt="Foto del anfitrión" class="foto-anfitrion">
+        <a href="VerPerfilAnfitrion.html?id=123">Ver perfil</a>
+
+    </div>
+</div>
+<div class="precio">
+    <span>Costo por mes: $8,000 MXN</span>
+</div>
         </section>
+
         <section class="comentarios">
             <h2>Comentarios</h2>
-            <p>Juan: Excelente lugar, anfitrión muy atento. (5/5)</p>
-            <p>María: Muy cómodo y seguro, lo recomiendo. (4/5)</p>
+            <div id="comentarios-lista"></div> <!-- Comentarios cargados dinámicamente -->
         </section>
+
         <button class="me-interesa">Me interesa</button>
     </div>
     

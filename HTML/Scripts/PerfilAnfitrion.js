@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 input.value = textoActual;
                 input.style.width = "100%";
                 input.style.marginTop = "5px";
-                parrafo.innerHTML = `${parrafo.querySelector("strong").outerHTML}`;
+                parrafo.innerHTML = `${parrafo.querySelector("strong").outerHTML}`; // Reemplazar texto por input
                 parrafo.appendChild(input);
             });
 
@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const updatedData = {};
 
+            // Guardar la información modificada
             informacionParrafos.forEach((parrafo) => {
                 const input = parrafo.querySelector("input");
                 const nuevoTexto = input.value;
@@ -71,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 nombreElemento.textContent = nombreInput.value;
             }
 
-            // Remover input de foto de perfil
+            // Verificar si la foto fue cambiada
             const fotoInput = document.querySelector("input[type='file']");
             if (fotoInput && fotoInput.files[0]) {
                 const file = fotoInput.files[0];
-                updatedData["Foto"] = await convertirImagenABase64(file);
+                updatedData["Foto"] = await convertirImagenABase64(file); // Convertir a base64
                 fotoInput.remove();
             }
 

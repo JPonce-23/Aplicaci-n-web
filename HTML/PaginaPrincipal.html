@@ -10,21 +10,21 @@
 <body>
 
     <header class="header">
-     <div class="menu-usuario">
+        <div class="menu-usuario">
             <label for="menu" class="icono-usuario">
-            <img src="IMG/Usuario.png" alt="Icono de usuario" class="Usuario">
+                <img src="IMG/Usuario.png" alt="Icono de usuario" class="Usuario">
             </label>
             <input type="checkbox" id="menu" class="menu-checkbox">
             <div class="despliegue" id="despliegue-menu">
-                <br><p>NOMBRE</p><br>
-                    <a href="Perfil-Estudiante.html" class="perfil-estudiante">Ver perfil</a>
-                    <a href="Guardado.html" class="guardado">Guardados</a>
-                    <a href="#" class="cierre-sesion-menu" onclick="logout()">Cerrar Sesión</a>
+                <br><p id="usuario-nombre">Nombre</p><br>
+                <a href="Perfil-Estudiante.html" class="perfil-estudiante">Ver perfil</a>
+                <a href="Guardado.html" class="guardado">Guardados</a>
+                <a href="#" class="cierre-sesion-menu" onclick="logout()">Cerrar Sesión</a>
             </div>
         </div>
 
         <div class="menu-busqueda">
-            <input type="text" placeholder="search" class="barra-busqueda">
+            <input type="text" placeholder="Buscar" class="barra-busqueda">
             <div class="categorias">
                 <button class="categoria">Casa</button>
                 <button class="categoria">Departamento</button>
@@ -60,16 +60,16 @@
 
     <main class="contenido">
         <div class="publicacion">
-            <button class="flecha izquierda">&lt;</button>
-            <img src="IMG/casa1.jpg" alt="Imagen de casa" class="imagen-casa">
-            <button class="flecha derecha">&gt;</button>
+            <button class="flecha izquierda" aria-label="Ver imagen anterior">&lt;</button>
+            <img src="IMG/casa1.jpg" alt="Imagen de una casa en venta o renta" class="imagen-casa">
+            <button class="flecha derecha" aria-label="Ver imagen siguiente">&gt;</button>
             <div class="info-casa">
                 <span class="nombre-casa">Nombre casa</span>
                 <span class="precio-casa">$MXN (por mes)</span>
                 <span class="calificacion-casa">⭐Calif</span>
                 <button class="boton-ver"><a href="Publicaciones.html">Ver</a></button>
             </div>
-        </div>        
+        </div>         
     </main>
 
 </body>

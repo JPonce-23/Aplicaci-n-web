@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // URL API
     const API_URL = "http://localhost:3000/api";
 
-    // PUBLICACIONES
+    // Obtener publicaciones desde la API
     const obtenerPublicaciones = async (query = {}) => {
         try {
             const url = new URL(`${API_URL}/publicaciones`);
@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
             publicacionElement.classList.add("publicacion");
 
             publicacionElement.innerHTML = `
-                <button class="flecha izquierda">&lt;</button>
+                <button class="flecha izquierda" aria-label="Ver imagen anterior">&lt;</button>
                 <img src="${publicacion.imagenes[0]}" alt="Imagen de ${publicacion.nombre}" class="imagen-casa">
-                <button class="flecha derecha">&gt;</button>
+                <button class="flecha derecha" aria-label="Ver imagen siguiente">&gt;</button>
                 <div class="info-casa">
                     <span class="nombre-casa">${publicacion.nombre}</span>
                     <span class="precio-casa">$${publicacion.precio} MXN</span>
@@ -63,12 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // FILTRAR PUBLICACIONES
+    // Filtrar publicaciones
     filtros.forEach((filtro) => {
         filtro.addEventListener("click", () => {
             const filtroTexto = filtro.textContent;
-
             let query = {};
+
             if (filtroTexto.includes("Precio")) {
                 query.ordenarPor = filtroTexto.includes("Menor") ? "precioAsc" : "precioDesc";
             } else if (filtroTexto.includes("Fecha")) {
@@ -81,13 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // BUSCAR PUBLICACIONES
+    // Buscar publicaciones por término
     barraBusqueda.addEventListener("input", () => {
         const terminoBusqueda = barraBusqueda.value.trim();
         obtenerPublicaciones({ buscar: terminoBusqueda });
     });
 
-    // FILTRO DE CATEGORÍA
+    // Filtro de categoría
     categorias.forEach((categoria) => {
         categoria.addEventListener("click", () => {
             const categoriaTexto = categoria.textContent.toLowerCase();
@@ -95,11 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // CERRAR SESIÓN
+    // Cerrar sesión
     window.logout = () => {
         if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
             // Eliminar token de sesión o cookies aquí si es necesario
-            window.location.href = "index.html";
+            window.location.href = "index.html"; // Redirigir a la página de inicio
         }
     };
 

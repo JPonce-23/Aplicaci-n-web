@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tokenInput.value = token;
 
     submitButton.addEventListener("click", async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const selectedInmuebleRating = getSelectedRadioValue(inmuebleRadios);
         const selectedAnfitrionRating = getSelectedRadioValue(anfitrionRadios);
@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    
     function getSelectedRadioValue(radioButtons) {
         for (const radio of radioButtons) {
             if (radio.checked) {
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return null;
     }
 
-    
     function resetForm(inmuebleRadios, anfitrionRadios, comentarioInput) {
         inmuebleRadios.forEach(radio => (radio.checked = false));
         anfitrionRadios.forEach(radio => (radio.checked = false));

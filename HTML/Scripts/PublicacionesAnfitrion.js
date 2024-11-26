@@ -2,32 +2,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     const menuUsuarioCheckbox = document.getElementById("menu-usuario");
     const menuNotificacionesCheckbox = document.getElementById("menu-notificaciones");
     const contenedorPublicaciones = document.querySelector(".contenido");
-
     
+    // Configuración del menú de usuario
     document.getElementById("despliegue-menu-usuario").addEventListener("click", (event) => {
         if (event.target.tagName === "A") {
-            menuUsuarioCheckbox.checked = false; // CIERRA EL MENU
+            menuUsuarioCheckbox.checked = false; // Cierra el menú
         }
     });
 
-    // MMOSTRAR NOSTIFICACIONES AL HACER CLIC EN EL ÍCONO
+    // Mostrar notificaciones
     document.getElementById("despliegue-menu-notificaciones").addEventListener("click", async (event) => {
         if (event.target.tagName === "P") {
             const nombreInteresado = event.target.textContent;
             alert(`Has seleccionado: ${nombreInteresado}`);
-            menuNotificacionesCheckbox.checked = false; // CIERRA EL MENU
+            menuNotificacionesCheckbox.checked = false; // Cierra el menú
             window.location.href = `PerfilEstudiante.html?nombre=${nombreInteresado}`;
         }
     });
 
-    // CIERRE DE SESION
+    // Cierre de sesión
     window.logout = () => {
         if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-            window.location.href = "index.html"; // REDIRECCIÓN AL INDEX
+            window.location.href = "index.html"; // Redirección al inicio
         }
     };
 
-    // OBTIENE PUBLICACIONES DEL BACKEND
+    // Obtener publicaciones del backend
     const obtenerPublicaciones = async () => {
         try {
             const response = await fetch("http://localhost:3000/api/publicaciones", {
@@ -43,8 +43,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
 
-    // MUESTRA PUBLICACIONES
+    // Renderizar las publicaciones
     const renderizarPublicaciones = (publicaciones) => {
+        contenedorPublicaciones.innerHTML = ""; // Limpiar el contenido actual
         publicaciones.forEach((publicacion) => {
             const publicacionDiv = document.createElement("div");
             publicacionDiv.classList.add("publicacion");
@@ -66,6 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             contenedorPublicaciones.appendChild(publicacionDiv);
 
+            // Manejo de imágenes
             const flechaIzquierda = publicacionDiv.querySelector(".flecha.izquierda");
             const flechaDerecha = publicacionDiv.querySelector(".flecha.derecha");
             const imagenCasa = publicacionDiv.querySelector(".imagen-casa");
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     };
 
-    // CARGA LA NOTIFICACIÓN
+    // Cargar notificaciones
     const cargarNotificaciones = async () => {
         try {
             const response = await fetch("http://localhost:3000/api/notificaciones", {
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const notificaciones = await response.json();
             const despliegueNotificaciones = document.getElementById("despliegue-menu-notificaciones");
-            despliegueNotificaciones.innerHTML = "";
+            despliegueNotificaciones.innerHTML = ""; // Limpiar notificaciones previas
 
             notificaciones.forEach((notificacion) => {
                 const notificacionElemento = document.createElement("p");
@@ -105,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
 
-    // CARGA PUBLICACIONES Y NOTIFICACIONES AL INICIO
+    // Obtener publicaciones y notificaciones al cargar la página
     const publicaciones = await obtenerPublicaciones();
     renderizarPublicaciones(publicaciones);
     cargarNotificaciones();

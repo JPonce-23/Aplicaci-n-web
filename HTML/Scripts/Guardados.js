@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // RENDERIZA LAS PUBLICACIONES EN EL HTML
     function renderizarPublicaciones(publicaciones) {
         contenedor.innerHTML = ""; // LIMPIA EL CONTENEDOR
 

@@ -77,12 +77,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             editando = true;
         } else {
-            // Guardar los cambios
-            editarBtn.textContent = "Editar";
-            const nuevoNombre = nombreElemento.querySelector("input").value;
-            const nuevoCorreo = informacionParrafos[0].querySelector("input").value;
-            const nuevoTelefono = informacionParrafos[1].querySelector("input").value;
-            const nuevoSexo = informacionParrafos[2].querySelector("input").value;
+            // Validación de los campos antes de guardar los cambios
+            const nuevoNombre = nombreElemento.querySelector("input").value.trim();
+            const nuevoCorreo = informacionParrafos[0].querySelector("input").value.trim();
+            const nuevoTelefono = informacionParrafos[1].querySelector("input").value.trim();
+            const nuevoSexo = informacionParrafos[2].querySelector("input").value.trim();
+            
+            // Validación simple para los campos vacíos
+            if (!nuevoNombre || !nuevoCorreo || !nuevoTelefono || !nuevoSexo) {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
 
             // Crear un objeto con los datos actualizados
             const perfilActualizado = {
@@ -90,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 correo: nuevoCorreo,
                 telefono: nuevoTelefono,
                 sexo: nuevoSexo,
-                foto: fotoPerfil.src, // La foto ya previsualizada
+                foto: fotoPerfil.src !== "IMG/placeholder.jpg" ? fotoPerfil.src : null, // Solo enviar la foto si fue cambiada
             };
 
             try {
@@ -116,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Restaurar la vista sin inputs
             informacionParrafos.forEach((parrafo, index) => {
                 const nuevoTexto = perfilActualizado[Object.keys(perfilActualizado)[index]];
-                parrafo.innerHTML = `${parrafo.querySelector("strong").outerHTML} ${nuevoTexto}`;
+                parrafo.innerHTML = `${parrafo.querySelector("strong").outerHTML} ${nuevoTexto || "N/A"}`;
             });
 
             // Guardar el nuevo nombre

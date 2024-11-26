@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear Nueva Publicación</title>
   <link rel="stylesheet" href="Diseños/Estilos-crear-publicacion.css">
-  <script src="Scripts/CrearPublicacion.js"></script>
+  <script src="Scripts/CrearPublicacion.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Publica un nuevo inmueble</h1>
-     <form action="#" method="POST">
-            <button type="submit" class="cierre-sesion">Cerrar Sesión</button>
-        </form>
-
+    <form action="#" method="POST">
+      <button type="submit" class="cierre-sesion">Cerrar Sesión</button>
+    </form>
   </header>
   <main>
-    <form action="#" method="post" class="formulario">
+    <form action="#" method="post" class="formulario" enctype="multipart/form-data">
       <div class="fotos">
         <label for="fotos">Fotos:</label>
         <input type="file" id="fotos" name="fotos" accept="image/*" multiple required>

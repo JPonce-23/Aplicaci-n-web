@@ -14,54 +14,41 @@
             <form action="">
                 <div class="entrada">
                    <p align="left">Nombre(s)*</p>
-                   <input type="text" placeholder="Nombre(s)" required><br>
+                   <input type="text" name="nombre" placeholder="Nombre(s)" required><br>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Apellido paterno*</p>
-                    <input type="text" placeholder="Apellido paterno" required>
+                    <input type="text" name="apellidoPaterno" placeholder="Apellido paterno" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Apellido materno*</p>
-                    <input type="text" placeholder="Apellido materno" required>
+                    <input type="text" name="apellidoMaterno" placeholder="Apellido materno" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Fecha de nacimiento*</p>
-                    <input type="date" placeholder="DD/MM/AAA" required>
+                    <input type="date" name="fechaNacimiento" placeholder="DD/MM/AAA" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Teléfono del estudiante*</p>
-                    <input type="tel" placeholder="Número telefónico" minlength="10" maxlength="14" required>
+                    <input type="tel" name="telefono" placeholder="Número telefónico" minlength="10" maxlength="14" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Correo insitucional*</p>
-                    <input type="email" placeholder="Correo insitucional" required>
+                    <input type="email" name="correo" placeholder="Correo institucional" required>
                 </div>
-
+            
                 <div class="entrada">
                     <br><p align="left">Contraseña*</p>
-                    <div class="enmascarar">
-                    <input type="password" id="contra" placeholder="Contraseña" minlength="6" maxlength="12" required>
-                    <label class="toggle-password">
-                        <input type="checkbox" id="mostrar-contraseña" onclick="togglePassword('contra','mostrar-contraseña')">
-                    </label>
-                    </div>
+                    <input type="password" id="contra" name="contraseña" placeholder="Contraseña" minlength="6" maxlength="12" required>
                 </div>
                 <div class="entrada">
                     <br><p align="left">Confirmación de contraseña*</p>
-                    <div class="enmascarar">
-                        <input type="password" id="confirm-password" placeholder="Confirma tu contraseña" minlength="6" maxlength="12" required>
-                        <label class="toggle-password">
-                            <input type="checkbox" id="mostrar-conf-contraseña onclick="togglePassword('confirm-password', 'mostrar-conf-contraseña')">
-                        </label>
-                    </div>
+                    <input type="password" id="confirm-password" name="confirmContraseña" placeholder="Confirma tu contraseña" minlength="6" maxlength="12" required>
                 </div>
-
+            
                 <div class="entrada">
                     <br><p align="left">Foto de perfil</p>
-                    <input type="file" accept="image/*" class="file-input"> <!--FIL TRA PARA QUE SOLO APAREZCAN IMAGENES-->
-                    <div class="foto-perfil">
-                        <span>Elige una foto de perfil</span>
-                    </div>
+                    <input type="file" name="fotoPerfil" accept="image/*" class="file-input"> <!--FIL TRA PARA QUE SOLO APAREZCAN IMAGENES-->
                 </div>
                 
                 <div class="entrada">
@@ -69,16 +56,17 @@
                     <div class="sexo-opciones">
                         <input type="radio" id="masculino" name="sexo" value="masculino" required>
                         <label for="masculino">Masculino</label>
-                
+            
                         <input type="radio" id="femenino" name="sexo" value="femenino">
                         <label for="femenino">Femenino</label>
-                
+            
                         <input type="radio" id="indefinido" name="sexo" value="indefinido">
                         <label for="indefinido">Indefinido</label>
                     </div>
                 </div>
                 <button type="submit" class="boton">Enviar</button>
             </form>
+            
         </div>
     </div>
 
